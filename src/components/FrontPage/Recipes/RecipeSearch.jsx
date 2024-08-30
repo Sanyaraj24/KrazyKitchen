@@ -1,5 +1,6 @@
-import React from 'react'
-import Searchbox from '../../Searchbox'
+//import React from 'react'
+
+import Searchbox from "./Searchbox"
 
 function RecipeSearch() {
   return (

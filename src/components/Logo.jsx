@@ -1,4 +1,4 @@
-import React from 'react'
+
 
 import myLogo from './Kraxykitchen.png'
 export default function Logo() {

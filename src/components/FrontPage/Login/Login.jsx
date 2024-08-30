@@ -1,4 +1,4 @@
-import React from 'react';
+//import React from 'react';
 import {
   MDBBtn,
   MDBContainer,
@@ -29,8 +29,8 @@ function Home() {
             <MDBInput wrapperClass='mb-4 mx-5 w-100' label='Password' id='formControlLg' type='password' size="lg"/>
 
             <MDBBtn className="mb-4 px-5 mx-5 w-100" color='info' size='lg'>Login</MDBBtn>
-            <p className="small mb-5 pb-lg-3 ms-5"><a class="text-muted" href="#!">Forgot password?</a></p>
-            <p className='ms-5'>Don't have an account? <a href="#!" class="link-info">Register here</a></p>
+            <p className="small mb-5 pb-lg-3 ms-5"><a className="text-muted" href="#!">Forgot password?</a></p>
+            <p className='ms-5'>Dont have an account? <a href="#!" className="link-info">Register here</a></p>
 
           </div>
 

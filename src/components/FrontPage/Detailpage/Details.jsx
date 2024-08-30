@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+//import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 
 const Details = () => {
@@ -13,7 +13,7 @@ const Details = () => {
         const { data } = await axios.get(
           `https://api.edamam.com/api/recipes/v2/${id}?type=public&app_id=0b63114e&app_key=f50710039ad863a4d9fecc8d4605657e`
         );
-        console.log(data.recipe);
+       
         setRecipe(data.recipe);
       } catch (err) {
         console.log(err);
@@ -34,13 +34,13 @@ const Details = () => {
       <br></br>
       <article>
         <div
-          className="container mx-auto px-4 tracking-wider py-5 shadow-2xl rounded-l h-max "
-          style={{ backgroundColor: "#f3f0ee" }}
+          className="container mx-auto px-4 tracking-wider py-5 shadow-2xl rounded-l h-max p-15 "
+          style={{ backgroundColor: "#F8F6F4" }}
         >
           <div className="heading flex space-x-10 py-3">
-            <div className="flex w-1/2 h-2/4 overflow-hidden   ">
+            <div className="flex w-1/2 h-2/4 overflow-hidden  ">
               <img
-                className="image w-[800px] h-[450px] rounded-xl ml-14 ring-offset-2 ring-2 "
+                className="image w-[70%] h-[70%] p-10 px-5 rounded-md"
                 src={recipe?.image}
                 alt="Recipe"
               />
@@ -78,7 +78,7 @@ const Details = () => {
                 {recipe?.healthLabels.map((label, index) => (
                   <span
                     key={index}
-                    className="bg-blue-100 text-black  text-xs font-medium me-2 px-3 py-1 my-1 rounded-full dark:bg-purple-900 dark:text-purple-300 "
+                    className=" text-black  text-xs font-medium me-2 px-3 py-1 my-1 rounded-full bg-[#D2E9E9] "
                     style={{ marginRight: "8px", display: "inline-block" }}
                   >
                     {label}
@@ -90,8 +90,8 @@ const Details = () => {
           <div className="details flex space x-8 gap-5  ">
             <div className="ingredients flex-none w-1/2 h-4/5">
               {/*INGREDIENTS */}
-              <div className="container-ingredient font-medium font-serif text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800 rounded-md ml-10 py-3">
-                <h1 className="text-2xl md:text-3xl pl-2 my-2 border-l-4 ml-3 mb-3  font-serif font-bold border-blue-400  dark:text-gray-200">
+              <div className="container-ingredient font-medium font-serif text-gray-900 whitespace-nowrap bg-[#E3F4F4] rounded-md ml-10 py-3">
+                <h1 className="text-2xl md:text-3xl pl-2 my-2 border-l-4 ml-3 mb-3  font-serif font-bold border-blue-400  text-black">
                   Ingredients
                 </h1>
                 <ul>
@@ -100,7 +100,7 @@ const Details = () => {
                       key={index}
                       style={{ listStyleType: "disc", marginBottom: "5px"}}
                     >
-                      {ingredient.text}
+                      {ingredient?.text}
                     </li>
                   ))}
                 </ul>
@@ -108,12 +108,12 @@ const Details = () => {
               
                 
               <div className="flex-row container-note border-solid font-serif ml-7"  >
-                <h2 class="flex flex-row flex-nowrap items-center mt-24">
-                  <span class="flex-grow block border-t border-black"></span>
-                  <span class="flex-none block mx-4 px-4 py-3 mt-3 text-xl rounded leading-none font-medium font-serif  bg-black text-white">
+                <h2 className="flex flex-row flex-nowrap items-center mt-24">
+                  <span className="flex-grow block border-t border-black"></span>
+                  <span className="flex-none block mx-4 px-4 py-3 mt-3 text-xl rounded leading-none font-medium font-serif  bg-black text-white">
                     NOTE
                   </span>
-                  <span class="flex-grow block border-t border-black"></span>
+                  <span className="flex-grow block border-t border-black"></span>
                 </h2>
                 <div className="flex  gap-4">
                 <p className="font-bold">Servings:</p>
@@ -140,23 +140,23 @@ const Details = () => {
              
             </div>
             <div className="nutrients flex-initial w-1/2 h-max mt-18 ml-4 py-2 ">
-              <h1 className="text-2xl md:text-3xl pl-2 my-2 border-l-4 ml-3 mb-3  font-serif font-bold border-blue-400  dark:text-gray-200">
+              <h1 className="text-2xl md:text-3xl pl-2 my-2 border-l-4 ml-3 mb-3  font-serif font-bold  ">
                 Nutrients
               </h1>
               {/* Display nutrients here */}
-              <div class="relative overflow-x-auto shadow-md sm:rounded-lg overflow-y-scroll h-[600px]">
-                <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400  ">
-                  <thead class="text-md font-medium font-serif font-semiboldtext-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
+              <div className="relative overflow-x-auto shadow-md sm:rounded-lg overflow-y-scroll h-[600px]">
+                <table className="w-full text-sm text-left rtl:text-right ">
+                  <thead className="text-md font-medium font-serif font-semiboldtext-gray-900 whitespace-nowrap bg-[#D2E9E9]">
                     <tr>
                       <th
                         scope="col"
-                        class="px-6 py-3 bg-gray-50 dark:bg-gray-800"
+                        className="px-6 py-3  "
                       >
                         Label
                       </th>
                       <th
-                        scope="col font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800"
-                        class="px-6 py-3"
+                        scope="col font-medium  whitespace-nowrap "
+                        className="px-6 py-3"
                       >
                         Value
                       </th>
@@ -164,16 +164,16 @@ const Details = () => {
                   </thead>
                   {/*Object.keys(obj)---to extract keys of obj*/}
                   {Object.keys(recipe?.totalNutrients).map((key, index) => (
-                    <tbody>
-                      <tr class="border-b border-gray-200 dark:border-gray-700 font-serif">
+                    <tbody key={index}>
+                      <tr className="border-b border-gray-200 font-serif bg-[#E3F4F4]">
                         <th
                           scope="row"
-                          class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800"
+                          className="px-6 py-4 font-medium  whitespace-nowrap "
                           key={index}
                         >
                           {recipe.totalNutrients[key].label}
                         </th>
-                        <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
+                        <td className="px-6 py-4 font-medium whitespace-nowrap  ">
                           {recipe.totalNutrients[key].quantity.toFixed(2)}
                         </td>
                       </tr>

@@ -1,4 +1,5 @@
-import React from 'react';
+/* eslint-disable react/prop-types */
+
 import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
@@ -18,7 +19,7 @@ import Details from './components/FrontPage/Detailpage/Details';
 function App() {
   return (
     <>
-      
+  
       <Router>
         <Navbar />
         <Routes>

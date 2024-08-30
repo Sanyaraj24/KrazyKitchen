@@ -16,7 +16,7 @@ function About() {
             <img src={profilepic} alt="Profile" className="h-48 lg:h-full object-cover object-center w-48 lg:w-full rounded-full lg:rounded-none" />
         </div>
         <div className="lg:col-span-2 flex flex-col justify-center p-4">
-        <h2 class="text-2xl md:text-3xl pl-2 my-2 border-l-4  font-sans font-bold border-teal-400  dark:text-gray-200">
+        <h2 className="text-2xl md:text-3xl pl-2 my-2 border-l-4  font-sans font-bold border-teal-400  dark:text-gray-200">
                         About Us
                     </h2>
             

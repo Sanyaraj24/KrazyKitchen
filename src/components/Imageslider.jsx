@@ -1,4 +1,4 @@
-import React from "react";
+//import React from "react";
 import { MDBCarousel, MDBCarouselItem } from 'mdb-react-ui-kit';
 
 export default function Imageslider() {
