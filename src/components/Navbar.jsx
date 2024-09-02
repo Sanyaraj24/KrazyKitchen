@@ -40,7 +40,7 @@ function Navbar() {
 
         <div className="hover:scale-110 duration-200 ease-linear text-green-500">
           <Link to="/login" style={{ color: "white", textDecoration: "none" }}>
-            Login
+            sanya
           </Link>
         </div>
       </nav>
