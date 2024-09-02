@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { FaUserCircle } from "react-icons/fa";
 function Navbar() {
   return (
     <>
@@ -40,7 +41,7 @@ function Navbar() {
 
         <div className="hover:scale-110 duration-200 ease-linear text-green-500">
           <Link to="/login" style={{ color: "white", textDecoration: "none" }}>
-            sanya
+          <FaUserCircle size={25}/>
           </Link>
         </div>
       </nav>

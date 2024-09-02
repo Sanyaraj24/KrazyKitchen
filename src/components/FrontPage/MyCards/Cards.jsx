@@ -8,7 +8,7 @@ export default function Cards({ item }) {
   };
 
   return (
-    <div className=" bg-white shadow-lg rounded-lg w-[350px] h-[400px] p-2">
+    <div className=" bg-white shadow-lg rounded-lg w-[300px] md:w-[345px] h-[400px] p-2 ">
       <img
         src={item?.recipe?.image}
         alt={item?.recipe?.label}
