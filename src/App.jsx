@@ -14,6 +14,8 @@ import BlogCard from './components/FrontPage/Blog/BlogCard';
 import About from './components/FrontPage/About/About';
 import RecipeSearch from './components/FrontPage/Recipes/RecipeSearch';
 import Details from './components/FrontPage/Detailpage/Details';
+import Login from './components/FrontPage/Login/Login';
+
 
 
 function App() {
@@ -25,10 +27,11 @@ function App() {
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route exact path="/recipesearch" element={<RecipeSearch/>} />
-          <Route exact path="/" element={<Home/>} />
+          
           <Route exact path="/about" element={<About/>} />
           <Route exact path="/blog" element={<BlogCard/>} />
           <Route exact path="/contact" element={<Contact />} />
+          <Route exact path="/login" element={<Login/>} />
           
           
           <Route path="/details/:id" element={<Details/>}/>

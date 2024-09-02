@@ -1,7 +1,11 @@
-
+import { useNavigate } from "react-router-dom";
 
 export default function HomeCard({myrecipe}) {
-    
+  const navigate=useNavigate();
+  const handleClick = () => {
+    navigate(`/details/${myrecipe?.recipe?.uri.split('_')[1]}`);
+  };
+   
   return(
     <>
   
@@ -11,6 +15,7 @@ export default function HomeCard({myrecipe}) {
           className="h-56 w-full object-cover rounded-t-lg"
           src={myrecipe?.recipe?.image}
           alt={myrecipe?.recipe?.label}
+          onClick={handleClick}
         />
       </div>
       <div className="mt-2 space-y-1">
