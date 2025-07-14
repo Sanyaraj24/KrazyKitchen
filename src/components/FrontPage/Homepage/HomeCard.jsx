@@ -5,8 +5,7 @@ export default function HomeCard({myrecipe}) {
   const handleClick = () => {
     navigate(`/details/${myrecipe?.recipe?.uri.split('_')[1]}`);
   };
-   
-  return(
+    return(
     <>
   
     <div className="rounded-lg shadow-lg bg-white p-2 w-96 h-auto">

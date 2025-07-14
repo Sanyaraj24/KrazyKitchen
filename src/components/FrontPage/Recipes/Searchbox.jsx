@@ -18,7 +18,7 @@ function Searchbox() {
 
   const searchRecipe = () => {
     if (searchedTerm.trim() !== '') {
-      setQuery(searchedTerm); // Update the query state to trigger useEffect
+      setQuery(searchedTerm);
     }
   };
 
@@ -27,22 +27,19 @@ function Searchbox() {
       <div className="App">
         <header className="relative">
           <div
-            className="search-bar bg-cover bg-center h-[450px] w-full flex items-center justify-center text-center"
-            style={{
-              backgroundImage: `url(/searchrecipe.png)`, 
-  
-            }}
+            className="search-bar bg-cover bg-center h-[400px] md:h-[450px] w-full flex items-center justify-center text-center"
+            style={{ backgroundImage: `url(/searchrecipe.png)` }}
           >
-            <div className="flex flex-col items-center w-full px-2 md:px-8">
+            <div className="flex flex-col items-center w-full px-4 md:px-10">
               <input
                 onChange={(e) => setSearchedTerm(e.target.value)}
                 value={searchedTerm}
                 type="text"
                 placeholder="Search a recipe"
-                className="w-full md:w-2/3 lg:w-1/2 h-12 px-4 py-2 rounded-lg shadow-md text-lg focus:outline-none focus:ring-2 focus:ring-blue-500 mt-8"
+                className="w-full sm:w-3/4 md:w-2/3 lg:w-1/2 h-12 px-4 py-2 rounded-lg shadow-md text-base md:text-lg focus:outline-none focus:ring-2 focus:ring-blue-500 mt-8"
               />
               <button
-                className="mt-10 bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-6 border-b-4 border-blue-700 hover:border-blue-500 rounded text-lg"
+                className="mt-6 md:mt-10 bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-6 border-b-4 border-blue-700 hover:border-blue-500 rounded text-base md:text-lg"
                 type="button"
                 onClick={searchRecipe}
                 disabled={loading}
@@ -54,7 +51,7 @@ function Searchbox() {
         </header>
       </div>
 
-      <div className="myCards grid grid-cols-2 md:grid-cols-3 gap-10  p-12 align-middle">
+      <div className="myCards grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-10 px-4 md:px-12 py-8">
         {data &&
           data.hits.map((item, index) => (
             <Cards key={index} item={item} />

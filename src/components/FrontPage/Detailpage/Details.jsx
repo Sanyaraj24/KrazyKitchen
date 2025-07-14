@@ -12,6 +12,8 @@ const Details = () => {
         const { data } = await axios.get(
           `https://api.edamam.com/api/recipes/v2/${id}?type=public&app_id=0b63114e&app_key=f50710039ad863a4d9fecc8d4605657e`
         );
+          
+       
         setRecipe(data.recipe);
       } catch (err) {
         console.error(err);
@@ -19,10 +21,10 @@ const Details = () => {
     };
     fetchRecipe();
   }, [id]);
-
-  if (!recipe) {
-    return <div>Loading...</div>;
+   if (!recipe || !recipe.image) {
+    return <div className="text-center mt-20 text-xl">Loading or Invalid Recipe Data...</div>;
   }
+
 
   return (
     <>
@@ -37,11 +39,13 @@ const Details = () => {
         >
           <div className="heading flex flex-col md:flex-row space-x-0 md:space-x-10 py-3">
             <div className="w-full md:w-1/2 flex justify-center md:justify-start">
-              <img
-                className="w-3/4 h-auto rounded-md"
-                src={recipe?.image}
-                alt="Recipe"
-              />
+            <img
+  className="w-3/4 h-auto rounded-md"
+  src={recipe.image}
+  alt={recipe.label}
+  onError={(e) => (e.target.src = "/fallback.jpg")}
+/>
+
             </div>
             <div className="mt-5 md:mt-0 w-full md:w-1/2">
               <h2 className="text-3xl md:text-4xl font-bold leading-tight text-black font-serif">
