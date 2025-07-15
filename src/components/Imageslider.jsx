@@ -3,7 +3,7 @@ import { MDBCarousel, MDBCarouselItem } from 'mdb-react-ui-kit';
 
 export default function Imageslider() {
   return (
-    <div className="relative mx-auto w-full max-w-screen-lg mb-8">
+    <div className="relative mx-auto w-full max-w-screen-lg">
       <MDBCarousel
         showControls
         interval={1000}

@@ -43,58 +43,74 @@ export default function Recipe_Category() {
   }, []);
 
   return (
-    <>
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8">
       {/* Pizza Section */}
       <div className="text-center py-4">
         <div className="relative inline-block align-middle">
-          <span className="text-2xl md:text-3xl font-bold">Pizza Bliss!</span>
+          <span className="text-2xl md:text-3xl lg:text-4xl font-bold">Pizza Bliss!</span>
           <span className="absolute -bottom-1 left-0 w-full h-1 bg-gradient-to-r from-red-500 via-orange-400 to-yellow-600 rounded-full"></span>
         </div>
       </div>
-      <div className="flex space-x-5 overflow-x-auto py-4 px-1 h-auto w-auto">
-        {pizzaRecipes.map((recipe, index) => (
-          <HomeCard key={index} myrecipe={recipe} />
-        ))}
+      <div className="flex space-x-4 overflow-x-auto py-4 px-1 no-scrollbar">
+        <div className="flex space-x-4 min-w-max w-full">
+          {pizzaRecipes.map((recipe, index) => (
+            <div key={index} className="w-64 sm:w-72 md:w-80 flex-shrink-0">
+              <HomeCard myrecipe={recipe} />
+            </div>
+          ))}
+        </div>
       </div>
 
       {/* Taco Section */}
       <div className="text-center py-8">
         <div className="relative inline-block align-middle">
-          <span className="text-2xl md:text-3xl font-bold">Taco Twist!</span>
+          <span className="text-2xl md:text-3xl lg:text-4xl font-bold">Taco Twist!</span>
           <span className="absolute -bottom-1 left-0 w-full h-1 bg-gradient-to-r from-red-500 via-orange-400 to-yellow-600 rounded-full"></span>
         </div>
       </div>
-      <div className="flex space-x-5 overflow-x-scroll overflow-y-clip w-full h-auto">
-        {tacoRecipes.map((recipe, index) => (
-          <HomeCard key={index} myrecipe={recipe} />
-        ))}
+      <div className="flex space-x-4 overflow-x-auto py-4 px-1 no-scrollbar">
+        <div className="flex space-x-4 min-w-max w-full">
+          {tacoRecipes.map((recipe, index) => (
+            <div key={index} className="w-64 sm:w-72 md:w-80 flex-shrink-0">
+              <HomeCard myrecipe={recipe} />
+            </div>
+          ))}
+        </div>
       </div>
 
       {/* Cake Section */}
       <div className="text-center py-8">
         <div className="relative inline-block align-middle">
-          <span className="text-2xl md:text-3xl font-bold">Dessert Delight!</span>
+          <span className="text-2xl md:text-3xl lg:text-4xl font-bold">Dessert Delight!</span>
           <span className="absolute -bottom-1 left-0 w-full h-1 bg-gradient-to-r from-red-500 via-orange-400 to-yellow-600 rounded-full"></span>
         </div>
       </div>
-      <div className="flex space-x-5 overflow-x-scroll overflow-y-clip w-full h-auto">
-        {cakeRecipes.map((recipe, index) => (
-          <HomeCard key={index} myrecipe={recipe} />
-        ))}
+      <div className="flex space-x-4 overflow-x-auto py-4 px-1 no-scrollbar">
+        <div className="flex space-x-4 min-w-max w-full">
+          {cakeRecipes.map((recipe, index) => (
+            <div key={index} className="w-64 sm:w-72 md:w-80 flex-shrink-0">
+              <HomeCard myrecipe={recipe} />
+            </div>
+          ))}
+        </div>
       </div>
 
       {/* Coffee Section */}
       <div className="text-center py-8">
         <div className="relative inline-block align-middle">
-          <span className="text-2xl md:text-3xl font-bold">Caffeine Kick?!</span>
+          <span className="text-2xl md:text-3xl lg:text-4xl font-bold">Caffeine Kick?!</span>
           <span className="absolute -bottom-1 left-0 w-full h-1 bg-gradient-to-r from-red-500 via-orange-400 to-yellow-600 rounded-full"></span>
         </div>
       </div>
-      <div className="flex space-x-5 overflow-x-scroll w-full h-full mb-5">
-        {coffeeRecipes.map((recipe, index) => (
-          <HomeCard key={index} myrecipe={recipe} />
-        ))}
+      <div className="flex space-x-4 overflow-x-auto py-4 px-1 no-scrollbar mb-8">
+        <div className="flex space-x-4 min-w-max w-full">
+          {coffeeRecipes.map((recipe, index) => (
+            <div key={index} className="w-64 sm:w-72 md:w-80 flex-shrink-0">
+              <HomeCard myrecipe={recipe} />
+            </div>
+          ))}
+        </div>
       </div>
-    </>
+    </div>
   );
 }

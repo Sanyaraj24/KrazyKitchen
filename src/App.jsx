@@ -10,12 +10,12 @@ import Home from './components/FrontPage/Home';
 
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Footer from './components/Footer';
-import BlogCard from './components/FrontPage/Blog/BlogCard';
+import Blog from './components/FrontPage/Blog/Blog';
 import About from './components/FrontPage/About/About';
 import RecipeSearch from './components/FrontPage/Recipes/RecipeSearch';
 import Details from './components/FrontPage/Detailpage/Details';
 import Profile from './components/Profile/Profile';
-
+import NewRecipe from  './components/GenerateRecipe/NewRecipe';
 
 function App() {
   return (
@@ -28,9 +28,10 @@ function App() {
           <Route exact path="/recipesearch" element={<RecipeSearch/>} />
           
           <Route exact path="/about" element={<About/>} />
-          <Route exact path="/blog" element={<BlogCard/>} />
+          <Route exact path="/blog" element={<Blog/>} />
           <Route exact path="/contact" element={<Contact />} />
           <Route exact path="/profile" element={<Profile/>} />
+          <Route exact path="/createRecipe" element={<NewRecipe/>} />
           <Route path="/details/:id" element={<Details/>}/>
           
         </Routes>

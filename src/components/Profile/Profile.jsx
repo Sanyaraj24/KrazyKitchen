@@ -40,7 +40,7 @@ export default function Profile() {
         <FaUser className="mx-auto text-4xl text-gray-400 mb-4" />
         <h2 className="text-2xl font-bold text-gray-800 mb-2">No User Logged In</h2>
         <p className="text-gray-600 mb-6">Please sign in to access your recipe profile</p>
-        <a href="/login" className="bg-amber-600 hover:bg-amber-700 text-white px-6 py-3 rounded-full font-medium transition duration-300 inline-block">
+        <a href="/login" className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full font-medium transition duration-300 inline-block">
           Go to Login
         </a>
       </div>
@@ -52,7 +52,7 @@ export default function Profile() {
       <div className="max-w-3xl mx-auto">
         <div className="bg-white shadow-xl rounded-lg overflow-hidden">
           {/* Profile Header */}
-          <div className="bg-gradient-to-r from-amber-500 to-amber-600 p-6 text-white">
+          <div className="bg-gradient-to-r from-indigo-500 to-teal-500 p-6 text-white">
             <div className="flex items-center space-x-6">
               <img
                 src={user.photoURL || "/KL.png"}
@@ -64,7 +64,7 @@ export default function Profile() {
                 <p className="flex items-center mt-1">
                   <FaEnvelope className="mr-2" /> {user.email}
                 </p>
-                {/**<div className="flex items-center mt-3 bg-amber-700 bg-opacity-30 px-3 py-1 rounded-full w-max">
+                {/**<div className="flex items-center mt-3 bg-teal-700 bg-opacity-30 px-3 py-1 rounded-full w-max">
                   <FaUtensils className="mr-2" />
                   <span>Premium Member</span>
                 </div> */}
@@ -76,20 +76,20 @@ export default function Profile() {
           <div className="p-6">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {/* Stats */}
-              <div className="bg-amber-50 p-4 rounded-lg">
+              <div className="bg-blue-50 p-4 rounded-lg">
                 <h3 className="font-semibold text-gray-700 mb-3">My Recipe Stats</h3>
                 <div className="space-y-3">
                   <div>
                     <p className="text-xs text-gray-500">Recipes Posted</p>
-                    <p className="text-2xl font-bold text-amber-600">24</p>
+                    <p className="text-2xl font-bold text-blue-600">24</p>
                   </div>
                   <div>
                     <p className="text-xs text-gray-500">Recipes Saved</p>
-                    <p className="text-2xl font-bold text-amber-600">56</p>
+                    <p className="text-2xl font-bold text-blue-600">56</p>
                   </div>
                   <div>
                     <p className="text-xs text-gray-500">Following</p>
-                    <p className="text-2xl font-bold text-amber-600">128</p>
+                    <p className="text-2xl font-bold text-blue-600">128</p>
                   </div>
                 </div>
               </div>
@@ -99,8 +99,8 @@ export default function Profile() {
                 <h3 className="font-semibold text-gray-700 mb-3">Recent Activity</h3>
                 <div className="space-y-4">
                   <div className="flex items-start">
-                    <div className="bg-amber-100 p-2 rounded-full mr-3">
-                      <FaUtensils className="text-amber-600" />
+                    <div className="bg-blue-100 p-2 rounded-full mr-3">
+                      <FaUtensils className="text-blue-600" />
                     </div>
                     <div>
                       <p className="font-medium">Added a new recipe</p>
@@ -108,8 +108,8 @@ export default function Profile() {
                     </div>
                   </div>
                   <div className="flex items-start">
-                    <div className="bg-amber-100 p-2 rounded-full mr-3">
-                      <FaUtensils className="text-amber-600" />
+                    <div className="bg-blue-100 p-2 rounded-full mr-3">
+                      <FaUtensils className="text-blue-600" />
                     </div>
                     <div>
                       <p className="font-medium">Saved a recipe</p>
@@ -123,12 +123,12 @@ export default function Profile() {
 
             {/* Actions */}
             <div className="mt-8 pt-6 border-t border-gray-200 flex flex-wrap gap-4 justify-between">
-              <button className="bg-white border border-amber-500 text-amber-600 hover:bg-amber-50 px-6 py-2 rounded-full font-medium transition duration-300 flex items-center">
+              <button className="bg-white border border-blue-500 text-blue-600 hover:bg-blue-50 px-6 py-2 rounded-full font-medium transition duration-300 flex items-center">
                 Edit Profile
               </button>
               <button
                 onClick={handleLogout}
-                className="bg-amber-600 hover:bg-amber-700 text-white px-6 py-2 rounded-full font-medium transition duration-300 flex items-center"
+                className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-full font-medium transition duration-300 flex items-center"
               >
                 <FaSignOutAlt className="mr-2" /> Sign Out
               </button>

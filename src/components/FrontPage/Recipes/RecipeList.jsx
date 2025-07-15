@@ -8,64 +8,93 @@ export const fetchData = async (defaultQuery) => {
   const storageKey = `MY_search_${defaultQuery}`;
   const expirationTime = 1000 * 60 * 60; // 1 hour
 
-  // Clean up expired items
-  for (let i = localStorage.length - 1; i >= 0; i--) {
-    const key = localStorage.key(i);
-    if (key && key.startsWith('MY_search_')) {
-      try {
-        const item = JSON.parse(localStorage.getItem(key));
-        if (item.timestamp && Date.now() - item.timestamp > expirationTime) {
-          localStorage.removeItem(key);
+  // Clean up expired items with better error handling
+  const cleanExpiredCache = () => {
+    try {
+      for (let i = localStorage.length - 1; i >= 0; i--) {
+        const key = localStorage.key(i);
+        if (key && key.startsWith('MY_search_')) {
+          const item = localStorage.getItem(key);
+          if (item) {
+            try {
+              const parsed = JSON.parse(item);
+              if (parsed.timestamp && Date.now() - parsed.timestamp > expirationTime) {
+                localStorage.removeItem(key);
+              }
+            } catch (e) {
+              localStorage.removeItem(key);
+            }
+          }
         }
-      } catch {
-        localStorage.removeItem(key);
+      }
+    } catch (error) {
+      console.error('Cache cleanup error:', error);
+    }
+  };
+
+  cleanExpiredCache();
+
+  try {
+    const searchStorage = localStorage.getItem(storageKey);
+    const apiUrl = `https://api.edamam.com/api/recipes/v2?type=public&q=${encodeURIComponent(defaultQuery)}&app_id=${app_id}&app_key=${app_key}`;
+
+    // Always try to fetch fresh data first
+    const fetchFreshData = async () => {
+      try {
+        const response = await fetch(apiUrl);
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+        return await response.json();
+      } catch (error) {
+        console.error('API fetch error:', error);
+        return null;
+      }
+    };
+
+    const freshData = await fetchFreshData();
+
+    if (freshData) {
+      // Cache the data in background without blocking
+      setTimeout(() => {
+        try {
+          const minimalData = freshData.hits.map(hit => ({
+            uri: hit.recipe.uri,
+            label: hit.recipe.label,
+            cuisineType: hit.recipe.cuisineType,
+            mealType: hit.recipe.mealType,
+            dishType: hit.recipe.dishType,
+            dietLabels: hit.recipe.dietLabels,
+            healthLabels: hit.recipe.healthLabels
+          }));
+
+          localStorage.setItem(storageKey, JSON.stringify({
+            data: minimalData,
+            timestamp: Date.now()
+          }));
+        } catch (e) {
+          console.error('Caching failed:', e);
+        }
+      }, 0);
+
+      return freshData;
+    }
+
+    // Fallback to cache if fresh data couldn't be fetched
+    if (searchStorage) {
+      try {
+        const cached = JSON.parse(searchStorage);
+        if (cached?.data) {
+          console.warn('Serving cached data due to API failure');
+          return { hits: cached.data.map(item => ({ recipe: item })) };
+        }
+      } catch (e) {
+        console.error('Cache parse error:', e);
       }
     }
-  }
 
-  const searchStorage = localStorage.getItem(storageKey);
+    return null;
 
-  if (!searchStorage) {
-    try {
-      const response = await fetch(`https://api.edamam.com/api/recipes/v2?type=public&q=${defaultQuery}&app_id=${app_id}&app_key=${app_key}`);
-      if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-
-      const data = await response.json();
-
-      // Store only lightweight data
-      const minimalData = data.hits.map(hit => ({
-        uri: hit.recipe.uri,
-        label: hit.recipe.label,
-        cuisineType: hit.recipe.cuisineType,
-        mealType: hit.recipe.mealType,
-        dishType: hit.recipe.dishType,
-        dietLabels: hit.recipe.dietLabels,
-        healthLabels: hit.recipe.healthLabels
-        // image is excluded to prevent caching signed URLs
-      }));
-
-      localStorage.setItem(storageKey, JSON.stringify({
-        data: minimalData,
-        timestamp: Date.now()
-      }));
-
-      // Return full data (not minimal) for image use
-      return data;
-    } catch (error) {
-      console.error('Error fetching data:', error);
-      return null;
-    }
-  } else {
-    try {
-      //const cached = JSON.parse(searchStorage);
-
-      // Fetch fresh for image
-      const response = await fetch(`https://api.edamam.com/api/recipes/v2?type=public&q=${defaultQuery}&app_id=${app_id}&app_key=${app_key}`);
-      const freshData = await response.json();
-      return freshData;
-    } catch (error) {
-      console.error('Error parsing localStorage data:', error);
-      return null;
-    }
+  } catch (error) {
+    console.error('Unexpected error in fetchData:', error);
+    return null;
   }
 };

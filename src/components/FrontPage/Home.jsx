@@ -1,5 +1,7 @@
+
 import Imageslider from '../Imageslider';
 import Recipe_Category from './Homepage/Recipe_Category';
+import Banner from './Banner';
 
 function Home() {
   return (
@@ -20,6 +22,7 @@ function Home() {
       <div className="mb-12">
         <Imageslider />
       </div>
+     <div><Banner/></div>
 
       {/* Recipe Category */}
       <div>
